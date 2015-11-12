@@ -1,3 +1,8 @@
-id;name;description;type;complexity;result;webLink;imagePath;done;todo
-1;Crème catalane;Une crème catalane aux oeufs;Dessert;1;3;https://www.meilleurduchef.com/cgi/mdc/l/fr/recette/creme-catalane.html;creme-catalane.jpg;true;false
-2;Gnocchis fritti;Des gnocchis avec une pâte à pizza et de la tomate;Plat;1;3;https://www.meilleurduchef.com/cgi/mdc/l/fr/recette/gnocchi-fritti.html;gnocchi-fritti.jpg;true;false
+id;name;description;type;duration;personne;complexity;result;webLink;imagePath;done;todo;comment
+1;Crème catalane;Une crème catalane aux oeufs;Dessert;30;5;1;3;https://www.meilleurduchef.com/cgi/mdc/l/fr/recette/creme-catalane.html;creme-catalane.jpg;true;false;120g de sucre suffise par rapport au 250 de la recette
+2;Gnocchis fritti;Des gnocchis avec une pâte à pizza et de la tomate;Plat;120;6;1;3;https://www.meilleurduchef.com/cgi/mdc/l/fr/recette/gnocchi-fritti.html;gnocchi-fritti.jpg;true;false;
+3;Basboussa;Gateau de semoule sans lait algérien;Dessert;53;6;1;3;http://www.lesfoodies.com/toutenature/recette/basboussa-5;basboussa.jpg;true;false;Diminuer le sucre du sirop (et du gateau)
+4;Brioche;Brioche à la crème ou au beurre;Petit-déjeuner;50;8;1;3;http://emiliesweetness.blogspot.fr/2014/08/brioche-la-creme-fraiche-sans-beurre.html;brioche.jpg;true;false;Remplacer par du lait et du beurre (50g ou plus)
+5;Gateau au yahourt;Gateau au yahourt;Dessert;45;4;1;2;http://www.marmiton.org/recettes/recette_gateau-au-yaourt_12719.aspx;gateau-au-yahourt.jpg;true;false;
+6;Accras de morue;Accras de morue;Plat;60;4;2;3;https://www.meilleurduchef.com/cgi/mdc/rech/fr?kw=accra;accras-morue.jpg;true;false;Désaller la morue
+7;Gateau de semoule;Gâteau de semoule aux raisins et caramel;Dessert;50;6;1;2;http://cuisine.journaldesfemmes.com/recette/316668-gateau-de-semoule-aux-raisins-et-caramel;gateau-de-semoule-aux-raisins-et-caramel.jpg;true;false;

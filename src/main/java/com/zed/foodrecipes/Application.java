@@ -1,18 +1,15 @@
 package com.zed.foodrecipes;
 
 import com.zed.foodrecipes.data.ImportCsvData;
-import com.zed.foodrecipes.data.ImportCsvDataFromMyFile;
+import com.zed.foodrecipes.data.ImportCsvDataFromIngredientList;
+import com.zed.foodrecipes.data.ImportCsvDataFromRecipe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.data.mongodb.core.MongoTemplate;
-
-import com.zed.foodrecipes.model.User;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -35,8 +32,11 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
 
-        ImportCsvData importCsvData = new ImportCsvDataFromMyFile(mongoTemplate);
-        importCsvData.insertDataIntoDBFromCsvFile();
+        ImportCsvData importCsvDataFromRecipe = new ImportCsvDataFromRecipe(mongoTemplate);
+        importCsvDataFromRecipe.insertDataIntoDBFromCsvFile();
+
+        ImportCsvData importCsvDataFromIngredientList = new ImportCsvDataFromIngredientList(mongoTemplate);
+        importCsvDataFromIngredientList.insertDataIntoDBFromCsvFile();
     }
 
 }

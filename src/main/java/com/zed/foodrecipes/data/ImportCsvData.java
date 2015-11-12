@@ -39,6 +39,8 @@ public abstract class ImportCsvData {
             String line = null;
             while ((line = reader.readLine()) != null) {
                 numLine++;
+
+                // Skip first line
                 if (numLine != 1) {
                     createAndInsertModel(Arrays.asList(line.split(getSeparator(), -1)));
                 }

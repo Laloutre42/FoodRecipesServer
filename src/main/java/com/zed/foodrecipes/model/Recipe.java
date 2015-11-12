@@ -22,15 +22,17 @@ public class Recipe {
     private String name;
     private String description;
     private String type;
-    private String ingredients;
     private String comment;
     private int complexity;
     private int result;
+    private int duration;
+    private int personNumber;
     private String webLink;
     private String imagePath;
     private boolean done;
     private boolean todo;
     private User user;
+    private Collection<String> ingredients = new ArrayList<String>();
 
     public Recipe(){
     }
@@ -49,12 +51,15 @@ public class Recipe {
         recipe.setName(listFields.get(i++));
         recipe.setDescription(listFields.get(i++));
         recipe.setType(listFields.get(i++));
+        recipe.setDuration(Operations.parseInt(listFields.get(i++)));
+        recipe.setPersonNumber(Operations.parseInt(listFields.get(i++)));
         recipe.setComplexity(Operations.parseInt(listFields.get(i++)));
         recipe.setResult(Operations.parseInt(listFields.get(i++)));
         recipe.setWebLink(listFields.get(i++));
         recipe.setImagePath(IMAGES_RECIPES_PATH + listFields.get(i++));
         recipe.setDone(Operations.parseBoolean(listFields.get(i++)));
         recipe.setTodo(Operations.parseBoolean(listFields.get(i++)));
+        recipe.setComment(listFields.get(i++));
 
         return recipe;
     }

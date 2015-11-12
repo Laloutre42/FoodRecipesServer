@@ -1,3 +1,0 @@
-id	name	description	type	complexity	result	webLink	imagePath	done	todo
-1	Crème catalane	Une crème catalane aux oeufs	Dessert	1	3	https://www.meilleurduchef.com/cgi/mdc/l/fr/recette/creme-catalane.html	creme-catalane.jpg	true	false
-2	Gnocchis fritti	Des gnocchis avec une pâte à pizza et de la tomate	Plat	1	3	https://www.meilleurduchef.com/cgi/mdc/l/fr/recette/gnocchi-fritti.html	gnocchi-fritti.jpg	true	false

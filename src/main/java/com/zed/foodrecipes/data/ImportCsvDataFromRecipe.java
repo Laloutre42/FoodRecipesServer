@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
-public class ImportCsvDataFromMyFile extends ImportCsvData{
+public class ImportCsvDataFromRecipe extends ImportCsvData{
 	
 	private final static String FILE_PATH = "C:/DEV/repo/FoodRecipesServer/data/recipes/input.csv";
 	private final static String SEPARATOR = ";";
@@ -16,9 +16,9 @@ public class ImportCsvDataFromMyFile extends ImportCsvData{
     /**
      * Class Logger
      */
-    private static final Logger logger = LoggerFactory.getLogger(ImportCsvDataFromMyFile.class);
+    private static final Logger logger = LoggerFactory.getLogger(ImportCsvDataFromRecipe.class);
     
-    public ImportCsvDataFromMyFile(MongoTemplate mongoTemplate) {
+    public ImportCsvDataFromRecipe(MongoTemplate mongoTemplate) {
     	super(mongoTemplate);
 	}
     
