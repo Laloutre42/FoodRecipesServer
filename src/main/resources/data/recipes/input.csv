@@ -8,5 +8,7 @@ id;name;description;type;duration;personne;complexity;result;webLink;imagePath;d
 7;Gateau de semoule;Gâteau de semoule aux raisins et caramel;Dessert;50;6;1;2;http://cuisine.journaldesfemmes.com/recette/316668-gateau-de-semoule-aux-raisins-et-caramel;gateau-de-semoule-aux-raisins-et-caramel.jpg;true;false;
 8;Pâte brisée;Pâte brisée;Pate;40;10;1;3;https://www.meilleurduchef.com/cgi/mdc/l/fr/recette/pate-brisee1.html;pate-brisee.jpg;true;false;400g de pâte
 9;Tarte au citron meringuée;Tarte au citron meringuée;Dessert;90;12;2;3;https://www.meilleurduchef.com/cgi/mdc/l/fr/recette/tarte-citron-meringuee.html;tarte-citron-meringuee.jpg;true;false;Diminuer le sucre (180g). Sinon Pour une version à l'orange, 180 g de sucre avec 4 oranges devraient suffire.
-10;Pâte à pizza levée;Pâte à pizza levée;Pate;50;8;1;3;https://www.meilleurduchef.com/cgi/mdc/l/fr/recette/pate-pizza-levee.html;pate-pizza-leveejpg;true;false;300 g de pâte environ
+10;Pâte à pizza levée;Pâte à pizza levée;Pate;50;8;1;3;https://www.meilleurduchef.com/cgi/mdc/l/fr/recette/pate-pizza-levee.html;pate-pizza-levee.jpg;true;false;300 g de pâte environ
 11;Pâte sablée noisette ;Pâte sablée noisette ;Pate;15;8;2;0;https://www.meilleurduchef.com/cgi/mdc/l/fr/recette/pate-sablee-noisette.html;pate-sablee-noisette.jpg;false;true;500g de pâte
+12;Gaufres;Gaufres;Petit-déjeuner;15;4;1;2;http://www.odelices.com/recette/gaufres-de-cyril-lignac-r494/;gaufre.jpg;true;false;
+13;Strudel;Strudel;Dessert;60;6;1;3;http://www.angrymum.fr/ma-recette-de-pate-a-strudel/;strudel.jpg;true;false;Farce à base de pomme/cannelle/raisin/noix

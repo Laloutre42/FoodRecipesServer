@@ -1,15 +1,17 @@
 package com.zed.foodrecipes.data;
 
+import java.io.InputStream;
 import java.util.List;
 
 import com.zed.foodrecipes.model.Recipe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.Resource;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 public class ImportCsvDataFromRecipe extends ImportCsvData{
 	
-	private final static String FILE_PATH = "C:/DEV/repo/FoodRecipesServer/data/recipes/input.csv";
+	//private final static String FILE_PATH = "C:/DEV/repo/FoodRecipesServer/data/recipes/input.csv";
 	private final static String SEPARATOR = ";";
 	private final static String COLLECTION_NAME = "recipe";
 	
@@ -30,8 +32,8 @@ public class ImportCsvDataFromRecipe extends ImportCsvData{
 	}    
 
 	@Override
-	protected String getFilePath() {
-		return FILE_PATH;
+	protected InputStream getResourceAsStream() {
+		return getClass().getResourceAsStream("/data/recipes/input.csv");
 	}
 
 

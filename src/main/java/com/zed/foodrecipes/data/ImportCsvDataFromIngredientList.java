@@ -7,18 +7,17 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
-public class ImportCsvDataFromIngredientList extends ImportCsvData{
+public class ImportCsvDataFromIngredientList extends ImportCsvData {
 
-	private final static String FILE_PATH = "C:/DEV/repo/FoodRecipesServer/data/recipes/ingredients.csv";
-	private final static String SEPARATOR = ";";
-	private final static String COLLECTION_NAME = "recipe";
+    //private final static String FILE_PATH = "C:/DEV/repo/FoodRecipesServer/data/recipes/ingredients.csv";
+    private final static String SEPARATOR = ";";
+    private final static String COLLECTION_NAME = "recipe";
 
     /**
      * Class Logger
@@ -26,14 +25,15 @@ public class ImportCsvDataFromIngredientList extends ImportCsvData{
     private static final Logger logger = LoggerFactory.getLogger(ImportCsvDataFromIngredientList.class);
 
     public ImportCsvDataFromIngredientList(MongoTemplate mongoTemplate) {
-    	super(mongoTemplate);
-	}
+        super(mongoTemplate);
+    }
 
     @Override
     public void insertDataIntoDBFromCsvFile() {
 
-        Path path = Paths.get(getFilePath());
-        try (BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)) {
+        try {
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(this.getResourceAsStream(), StandardCharsets.ISO_8859_1));
 
             int numLine = 0;
             String line = null;
@@ -50,9 +50,9 @@ public class ImportCsvDataFromIngredientList extends ImportCsvData{
             logger.error("IOException", e);
         }
     }
-    
-	@Override
-	protected void createAndInsertModel(List<String> lineSplitted) {
+
+    @Override
+    protected void createAndInsertModel(List<String> lineSplitted) {
 
         String ingredient = lineSplitted.get(2);
 
@@ -61,23 +61,23 @@ public class ImportCsvDataFromIngredientList extends ImportCsvData{
 
         mongoTemplate.save(recipe);
 
-        logger.info("Update recipe id[" + recipe + "] with ingredient ["+ingredient+"]");
-	}    
+        logger.info("Update recipe id[" + recipe + "] with ingredient [" + ingredient + "]");
+    }
 
-	@Override
-	protected String getFilePath() {
-		return FILE_PATH;
-	}
+    @Override
+    protected InputStream getResourceAsStream() {
+        return getClass().getResourceAsStream("/data/recipes/ingredients.csv");
+    }
 
 
-	@Override
-	protected String getSeparator() {
-		return SEPARATOR;
-	}
+    @Override
+    protected String getSeparator() {
+        return SEPARATOR;
+    }
 
-	@Override
-	protected String getCollectionName() {
-		return COLLECTION_NAME;
-	}
+    @Override
+    protected String getCollectionName() {
+        return COLLECTION_NAME;
+    }
 
 }
