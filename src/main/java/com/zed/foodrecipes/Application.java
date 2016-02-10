@@ -32,11 +32,17 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
 
-        ImportCsvData importCsvDataFromRecipe = new ImportCsvDataFromRecipe(mongoTemplate);
-        importCsvDataFromRecipe.insertDataIntoDBFromCsvFile();
+        if ((strings.length > 0) && (strings[0].equals("--import-data"))) {
 
-        ImportCsvData importCsvDataFromIngredientList = new ImportCsvDataFromIngredientList(mongoTemplate);
-        importCsvDataFromIngredientList.insertDataIntoDBFromCsvFile();
+            logger.debug("Loading data from csv file ... loading");
+
+            ImportCsvData importCsvDataFromRecipe = new ImportCsvDataFromRecipe(mongoTemplate);
+            importCsvDataFromRecipe.insertDataIntoDBFromCsvFile();
+
+            ImportCsvData importCsvDataFromIngredientList = new ImportCsvDataFromIngredientList(mongoTemplate);
+            importCsvDataFromIngredientList.insertDataIntoDBFromCsvFile();
+            logger.debug("Loading data from csv file ... done");
+        }
     }
 
 }
