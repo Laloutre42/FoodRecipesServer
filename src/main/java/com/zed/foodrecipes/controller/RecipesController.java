@@ -39,6 +39,16 @@ public class RecipesController {
         return recipesRepository.findOne(id);
     }
 
+    @RequestMapping(value = "/userId/{userId}", method = RequestMethod.GET)
+    public List<Recipe> getRecipesByUserId(@PathVariable String userId) {
+        return recipesRepository.findByUserId(new ObjectId(userId));
+    }
+
+    @RequestMapping(value = "/status/{status}", method = RequestMethod.GET)
+    public List<Recipe> getRecipesByStatus(@PathVariable int status) {
+        return recipesRepository.findByStatus(status);
+    }
+
     @RequestMapping(value = "", method = RequestMethod.POST)
     public Recipe addRecipe(@Valid @RequestBody Recipe recipe) {
         return recipesRepository.save(recipe);

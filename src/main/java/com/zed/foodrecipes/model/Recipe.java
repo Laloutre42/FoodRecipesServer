@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -16,13 +17,18 @@ import java.util.List;
 @Document
 public class Recipe {
 
+    public final static int ORIGINAL = 0;
+    public final static int DUPLICATED = 1;
+
     public static final String IMAGES_RECIPES_PATH = "/assets/images/foodrecipes/recipes/165-124/";
     @Id
     private String id;
+    @NotNull
     private String name;
     private String description;
     private String type;
     private String comment;
+    private int status;
     private int complexity;
     private int result;
     private int duration;
@@ -60,6 +66,7 @@ public class Recipe {
         recipe.setDone(Operations.parseBoolean(listFields.get(i++)));
         recipe.setTodo(Operations.parseBoolean(listFields.get(i++)));
         recipe.setComment(listFields.get(i++));
+        recipe.setStatus(ORIGINAL);
 
         return recipe;
     }

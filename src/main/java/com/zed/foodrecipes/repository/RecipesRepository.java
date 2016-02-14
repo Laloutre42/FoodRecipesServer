@@ -13,4 +13,8 @@ import java.util.List;
 
 public interface RecipesRepository extends CrudRepository<Recipe, String> {
 
+    @Query("{ 'user._id' : ?0 }")
+    List<Recipe> findByUserId(ObjectId objectId);
+
+    List<Recipe> findByStatus(int status);
 }
