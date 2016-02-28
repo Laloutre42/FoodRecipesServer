@@ -20,9 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/api/authenticationCheck")
 public class AuthenticationCheckController {
 
-    /**
-     * Class Logger
-     */
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationCheckController.class);
 
     @Inject
