@@ -5,15 +5,18 @@ package com.zed.foodrecipes.repository;
  */
 
 import com.zed.foodrecipes.model.User;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, String> {
 
-    User findByNameAndPassword(String name, String password);
+    User findByEmailAndPassword(String email, String password);
+
     User findByNameProviderId(String nameProviderId);
+
+    User findByEmail(String email);
+
     User findByName(String name);
 
 }

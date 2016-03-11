@@ -1,11 +1,9 @@
 package com.zed.foodrecipes.controller.exception;
 
 import com.mongodb.MongoTimeoutException;
-import com.zed.foodrecipes.controller.FacebookController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -26,14 +24,14 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
     @ExceptionHandler({MongoTimeoutException.class})
     public String handleMongoTimeoutException(MongoTimeoutException exception) {
         logger.error("[handleMongoTimeoutException] " + exception.getMessage());
-        return "MongoTimeoutException";
+        return exception.getMessage();
     }
 
-    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Exception")
-    @ExceptionHandler({Exception.class})
-    public String handleException(Exception exception) {
-        logger.error("[handleException] " + exception.getMessage());
-        return "Exception";
-    }
+//    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Exception")
+//    @ExceptionHandler({Exception.class})
+//    public String handleException(Exception exception) {
+//        logger.error("[handleException] " + exception.getMessage());
+//        return exception.getMessage();
+//    }
 
 }

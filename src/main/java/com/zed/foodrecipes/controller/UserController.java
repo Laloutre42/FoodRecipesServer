@@ -1,19 +1,19 @@
 package com.zed.foodrecipes.controller;
 
+import com.zed.foodrecipes.exception.user.impl.*;
 import com.zed.foodrecipes.model.User;
 import com.zed.foodrecipes.repository.UserRepository;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-
 import java.security.Principal;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * Created by Arnaud on 01/05/2015.
@@ -34,21 +34,36 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public User login(@RequestBody User user) {
 
-        User userInDb = userRepository.findByNameAndPassword(user.getName(), user.getPassword());
-        if (userInDb == null){
-            throw new InternalError("Invalid user name or password");
+        User userInDb = userRepository.findByEmail(user.getEmail());
+        if (userInDb == null) {
+            throw new UserNotFoundException();
         }
-        else {
-            return userInDb;
+
+        // Check password
+        if (!BCrypt.checkpw(user.getPassword(), userInDb.getPassword())) {
+            throw new UserPasswordInvalidException();
         }
+
+        return userInDb;
     }
 
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
     public User signUp(@Valid @RequestBody User user) {
 
-        if ((user.getId() != null && userRepository.exists(user.getId())) || (userRepository.findByName(user.getName()) != null)){
-            throw new InternalError("User already exist");
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new UserEmailAlreadyExistException();
         }
+        if (userRepository.findByName(user.getName()) != null) {
+            throw new UserNameAlreadyExistException();
+        }
+        if ((user.getId() != null && userRepository.exists(user.getId()))) {
+            throw new UserAlreadyExistException();
+        }
+
+        // Encrypt password
+        String encryptedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(encryptedPassword);
+
         return userRepository.save(user);
     }
 
