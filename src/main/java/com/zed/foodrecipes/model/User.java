@@ -1,7 +1,6 @@
 package com.zed.foodrecipes.model;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,22 +19,27 @@ public class User implements SocialUserDetails {
     @Id
     private String id;
 
-    @NotBlank
     private String name;
 
-    @NotBlank
+    private String fullName;
+
     private String password;
+
+    private String email;
 
     private UserRole role = UserRole.USER;
 
-    @NotBlank
-    private String email;
-
     private String providerId;
 
-    private String nameProviderId;
-
     private boolean accountLocked;
+
+    public User(String name, String fullName, String email, String providerId) {
+        this.name = name;
+        this.fullName = fullName;
+        this.email = email;
+        this.role = UserRole.USER;
+        this.providerId = providerId;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -69,7 +73,7 @@ public class User implements SocialUserDetails {
 
     @Override
     public String getUserId() {
-        return this.name + "["+ this.providerId + "]";
+        return this.getId();
     }
 
 }

@@ -15,15 +15,25 @@
  */
 package com.zed.foodrecipes.signin;
 
-import org.springframework.stereotype.Controller;
+import com.zed.foodrecipes.service.RedirectViewService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
-@Controller
+@RestController
 public class SigninController {
 
-	@RequestMapping(value="/signin", method=RequestMethod.GET)
-	public void signin() {
-	}
+    @Autowired
+    RedirectViewService redirectViewService;
+
+    private ProviderSignInUtils providerSignInUtils;
+
+    @RequestMapping(value = "/signin", method = RequestMethod.GET)
+    public RedirectView signin() {
+        return redirectViewService.createApplicationMainPageRedirectView();
+    }
 
 }

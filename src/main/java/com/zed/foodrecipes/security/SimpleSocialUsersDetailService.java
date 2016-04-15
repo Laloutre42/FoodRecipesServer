@@ -19,9 +19,9 @@ public class SimpleSocialUsersDetailService implements SocialUserDetailsService,
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserDetails userDetails = userRepository.findByName(username);
+		UserDetails userDetails = userRepository.findOne(username);
         if (userDetails == null) {
-            throw new UsernameNotFoundException("Cannot find user by username " + username);
+            throw new UsernameNotFoundException("Cannot find user by id " + username);
         }
         return userDetails;		
 	}

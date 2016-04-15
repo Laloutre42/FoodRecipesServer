@@ -39,11 +39,11 @@ public class AuthenticationCheckController {
         } else {
             logger.debug("[checkAuthentication] Authenticated OK");
 
-            String nameProviderId = SecurityContextHolder.getContext().getAuthentication().getName();
+            String userId = SecurityContextHolder.getContext().getAuthentication().getName();
 
-            User user = userRepository.findByNameProviderId(nameProviderId);
+            User user = userRepository.findOne(userId);
             if (user == null) {
-                throw new InternalError("Cannot find user by username for nameProviderId [" + nameProviderId + "]");
+                throw new InternalError("Cannot find user by id for id {} [" + userId + "]");
             }
             return user;
         }

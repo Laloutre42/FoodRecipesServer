@@ -3,13 +3,17 @@ package com.zed.foodrecipes;
 import com.zed.foodrecipes.data.ImportCsvData;
 import com.zed.foodrecipes.data.ImportCsvDataFromIngredientList;
 import com.zed.foodrecipes.data.ImportCsvDataFromRecipe;
+import com.zed.foodrecipes.signin.SimpleSignInAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.social.connect.web.SignInAdapter;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {

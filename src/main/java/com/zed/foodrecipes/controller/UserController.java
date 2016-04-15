@@ -3,6 +3,7 @@ package com.zed.foodrecipes.controller;
 import com.zed.foodrecipes.exception.user.impl.*;
 import com.zed.foodrecipes.model.User;
 import com.zed.foodrecipes.repository.UserRepository;
+import com.zed.foodrecipes.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public User login(@RequestBody User user) {
 
@@ -49,22 +53,7 @@ public class UserController {
 
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
     public User signUp(@Valid @RequestBody User user) {
-
-        if (userRepository.findByEmail(user.getEmail()) != null) {
-            throw new UserEmailAlreadyExistException();
-        }
-        if (userRepository.findByName(user.getName()) != null) {
-            throw new UserNameAlreadyExistException();
-        }
-        if ((user.getId() != null && userRepository.exists(user.getId()))) {
-            throw new UserAlreadyExistException();
-        }
-
-        // Encrypt password
-        String encryptedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
-        user.setPassword(encryptedPassword);
-
-        return userRepository.save(user);
+        return userService.createUser(user);
     }
 
     @RequestMapping("/principalUser")

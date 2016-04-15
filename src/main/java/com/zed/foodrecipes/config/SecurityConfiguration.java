@@ -40,29 +40,28 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-//            .httpBasic()
-//        .and()
-                .formLogin()
+            .formLogin()
                 .loginPage(applicationUrl + "/signin")
-                .and()
+            .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/api/recipes/**",
-                        "/api/authenticationCheck",
-                        "/api/signup",
-                        "/api/user/**",
-                        "/auth/**")
+                    "/**",
+                    "/api/recipes/**",
+                    "/api/authenticationCheck",
+                    "/api/signup",
+                    "/api/user/**",
+                    "/auth/**")
                 .permitAll()
                 .anyRequest().authenticated()
-                .and()
+            .and()
                 .logout()
                 .deleteCookies("JSESSIONID")
                 .logoutUrl("/api/logout")
-                .and()
-                .rememberMe()
-                .and()
+            .and()
+            .   rememberMe()
+            .and()
                 .apply(getSpringSocialConfigurer())
-                .and()
+            .and()
                 .csrf()
                 .disable();
 //            .csrfTokenRepository(csrfTokenRepository())

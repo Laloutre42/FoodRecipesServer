@@ -240,7 +240,7 @@
                         </image>
                     </images>
                     <authConfig>
-                        <username>Laloutre42</username>
+                        <userName>Laloutre42</userName>
                         <password>Maximus42</password>
                     </authConfig>
                 </configuration>
