@@ -2,7 +2,6 @@ package com.zed.foodrecipes.controller;
 
 import com.zed.foodrecipes.model.Recipe;
 import com.zed.foodrecipes.repository.RecipesRepository;
-import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,16 +36,6 @@ public class RecipesController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Recipe getRecipesById(@PathVariable String id) {
         return recipesRepository.findOne(id);
-    }
-
-    @RequestMapping(value = "/userId/{userId}", method = RequestMethod.GET)
-    public List<Recipe> getRecipesByUserId(@PathVariable String userId) {
-        return recipesRepository.findByUserId(new ObjectId(userId));
-    }
-
-    @RequestMapping(value = "/status/{status}", method = RequestMethod.GET)
-    public List<Recipe> getRecipesByStatus(@PathVariable int status) {
-        return recipesRepository.findByStatus(status);
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
